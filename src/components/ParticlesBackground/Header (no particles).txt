@@ -1,0 +1,5 @@
+Header (no particles)
+  ↓
+Content Area (WITH particles background)
+  ↓
+Footer (no particles)
