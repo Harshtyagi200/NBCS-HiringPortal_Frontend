@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function ErrorPage() {
   const error = useRouteError();
   
-  // Safely extract error message
+  
   const errorMessage = error?.statusText || error?.message || "Page not found";
   const errorStatus = error?.status || "404";
 

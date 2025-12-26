@@ -136,7 +136,7 @@ export default function Contact() {
                                 onClick={
                                     (e) => {
                                         e.preventDefault();
-                                        // Handle form submission logic here
+                                        
                                         console.log('Contact form submitted');
                                         navigate('/submit2');
                                     }

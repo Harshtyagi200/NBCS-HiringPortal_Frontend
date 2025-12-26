@@ -12,14 +12,14 @@ export const AuthProvider = ({ children }) => {
   const [registeredAccounts, setRegisteredAccounts] = useState([]);
 
   useEffect(() => {
-    // Load current user
+    
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
       setUser(JSON.parse(storedUser));
       setIsAuthenticated(true);
     }
 
-    // Load all registered accounts
+    
     const storedAccounts = localStorage.getItem('registeredAccounts');
     if (storedAccounts) {
       setRegisteredAccounts(JSON.parse(storedAccounts));
@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = (userData) => {
-    // Load accounts from localStorage directly to ensure we have latest data
+   
     const storedAccounts = localStorage.getItem('registeredAccounts');
     const accountsToCheck = storedAccounts ? JSON.parse(storedAccounts) : registeredAccounts;
     
@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
     console.log('Stored accounts:', accountsToCheck);
     console.log('Number of accounts:', accountsToCheck.length);
     
-    // Check if account exists in registered accounts (email is case-insensitive)
+    
     const accountExists = accountsToCheck.some(
       account => {
         console.log(`Checking account: name="${account.name}", email="${account.email}"`);
@@ -55,7 +55,7 @@ export const AuthProvider = ({ children }) => {
     console.log('Account exists:', accountExists);
 
     if (!accountExists) {
-      // Account doesn't exist or wrong credentials
+     
       console.log('LOGIN FAILED: Account not found');
       return { success: false, message: 'Account not found. Please check your details or sign up.' };
     }
@@ -74,7 +74,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const signup = (userData) => {
-    // Load accounts from localStorage directly to ensure we have latest data
+   
     const storedAccounts = localStorage.getItem('registeredAccounts');
     const accountsToCheck = storedAccounts ? JSON.parse(storedAccounts) : [];
     
@@ -82,21 +82,21 @@ export const AuthProvider = ({ children }) => {
     console.log('Signup data:', userData);
     console.log('Current accounts in localStorage:', accountsToCheck);
     
-    // Check if email already exists (case-insensitive)
+    
     const emailExists = accountsToCheck.some(account => account.email.toLowerCase() === userData.email.toLowerCase());
     if (emailExists) {
       console.log('EMAIL ALREADY EXISTS');
       return { success: false, message: 'Email already registered. Please login or use a different email.' };
     }
 
-    // Add to registered accounts
+    
     const updatedAccounts = [...accountsToCheck, userData];
     console.log('Updated accounts list:', updatedAccounts);
     
     setRegisteredAccounts(updatedAccounts);
     localStorage.setItem('registeredAccounts', JSON.stringify(updatedAccounts));
 
-    // Auto-login after signup
+    
     setUser(userData);
     setIsAuthenticated(true);
     localStorage.setItem('user', JSON.stringify(userData));

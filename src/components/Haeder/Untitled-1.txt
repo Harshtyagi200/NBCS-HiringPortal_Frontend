@@ -1,5 +1,0 @@
-Z-10: Particles (animate in front)
-  ↓
-Z-20: Header, Content, Footer (text visible)
-  ↓
-Z-20: AlertBox (on top of everything)

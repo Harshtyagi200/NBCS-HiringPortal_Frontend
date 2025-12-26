@@ -26,7 +26,7 @@ function Signup() {
     const handleSubmit = (e) => {
         e.preventDefault();
         
-        // Validate all form fields
+        
         if (!formData.name.trim()) {
             showAlert('Please enter your full name', 'warning');
             return;
@@ -49,7 +49,7 @@ function Signup() {
         }
         
         console.log('Signup Form Data:', formData);
-        // Call signup with validation
+        
         const result = signup(formData);
         
         if (result.success) {

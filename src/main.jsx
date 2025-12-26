@@ -18,6 +18,7 @@ import { AlertProvider } from './context/AlertContext.jsx'
 import PlacementProcess from './components/Placement process/PlacementProcess.jsx'
 import Submit from './components/Submit confirmation/Submit.jsx'
 import Submit2 from './components/Submit2/Submit2.jsx'
+import ParticlesBackground from './components/ParticlesBackground/ParticlesBackground.jsx'
 
 const router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
       {
         path: "submit2",
         element: <Submit2 />
+      },
+      {
+       path: "particles",
+       element: <ParticlesBackground />
       },
       {
         path: "*",

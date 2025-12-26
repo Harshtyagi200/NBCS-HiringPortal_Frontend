@@ -9,7 +9,7 @@ function Profile() {
   const { showAlert } = useAlert();
   const buttonRef = useRef(null);
   
-  // Safety check for context
+ 
   if (!authContext) {
     return null;
   }
@@ -19,27 +19,27 @@ function Profile() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [dropdownPosition, setDropdownPosition] = useState({ top: 0, left: 0 });
 
-  // Safety checks
+  
   if (!isAuthenticated || !user) {
     return null;
   }
 
-  // Update dropdown position when opening
+  
   useEffect(() => {
     if (isDropdownOpen && buttonRef.current) {
       const rect = buttonRef.current.getBoundingClientRect();
       setDropdownPosition({
         top: rect.bottom + 10,
-        left: rect.right - 384 // w-96 = 384px, align right side
+        left: rect.right - 384 
       });
     }
   }, [isDropdownOpen]);
 
-  // Close dropdown when clicking outside
+  
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (buttonRef.current && !buttonRef.current.contains(event.target)) {
-        // Check if clicked element is inside the dropdown
+        
         const dropdown = document.getElementById('profile-dropdown');
         if (dropdown && !dropdown.contains(event.target)) {
           setIsDropdownOpen(false);
@@ -63,7 +63,7 @@ function Profile() {
     setIsDropdownOpen(false);
     showAlert('Logged out successfully!', 'success');
     
-    // Navigate after a slight delay to allow state update
+    
     setTimeout(() => {
       navigate('/', { replace: true });
     }, 300);
@@ -71,7 +71,7 @@ function Profile() {
 
   return (
     <>
-      {/* Profile Button */}
+      
       <button
         ref={buttonRef}
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -88,7 +88,7 @@ function Profile() {
         </svg>
       </button>
 
-      {/* Dropdown Menu - Using Portal for proper layering */}
+      
       {isDropdownOpen && createPortal(
         <div 
           id="profile-dropdown"
@@ -102,7 +102,7 @@ function Profile() {
           }}
           onClick={(e) => e.stopPropagation()}
         >
-          {/* Profile Header */}
+          
           <div className="px-6 py-6 bg-linear-to-r from-orange-500 to-orange-600">
             <div className="flex items-center space-x-4">
               <div className="w-16 h-16 rounded-full bg-white text-orange-600 flex items-center justify-center font-bold text-2xl shadow-lg">
@@ -115,7 +115,7 @@ function Profile() {
             </div>
           </div>
 
-          {/* Profile Info */}
+          
           <div className="px-6 py-6 space-y-4">
             <div className="bg-slate-800 rounded-lg p-4">
               <p className="text-orange-400 font-semibold text-xs uppercase tracking-wider mb-1">Full Name</p>
@@ -140,10 +140,10 @@ function Profile() {
             </div>
           </div>
 
-          {/* Divider */}
+          
           <div className="border-t border-slate-700"></div>
 
-          {/* Logout Button */}
+          
           <div className="px-6 py-4">
             <button
               onClick={handleLogout}

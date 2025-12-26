@@ -43,7 +43,7 @@ function Login() {
         
         console.log('Login Form Data:', formData);
         
-        // Verify account before logging in
+        
         const result = login(formData);
         console.log('Login result:', result);
         

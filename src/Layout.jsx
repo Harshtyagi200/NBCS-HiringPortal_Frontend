@@ -10,7 +10,7 @@ function Layout() {
   return (
     <div className="min-h-screen flex flex-col bg-black text-white relative">
 
-      {/* Global particles/video background (sits behind header/content) */}
+     
       <ParticlesBackground />
 
      
@@ -18,17 +18,17 @@ function Layout() {
         <Header />
       </div>
 
-      {/* Main Content */}
+      
       <div className="relative grow" style={{ zIndex: 50 }}>
         <Outlet />
       </div>
 
-      {/* Footer */}
+     
       <div className="relative" style={{ zIndex: 50 }}>
         <Footer />
       </div>
 
-      {/* AlertBox - Always on top of everything */}
+      
       <div style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 99999, pointerEvents: 'none' }}>
         <AlertBox />
       </div>

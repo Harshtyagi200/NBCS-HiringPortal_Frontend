@@ -16,7 +16,7 @@ export default function OTPInput({ phoneOrEmail, type = 'email', onVerify, onClo
 
     setLoading(true)
     
-    // Simulate OTP verification delay
+    
     setTimeout(() => {
       setLoading(false)
       showAlert(`${type === 'email' ? 'Email' : 'Mobile'} verified successfully!`, 'success')

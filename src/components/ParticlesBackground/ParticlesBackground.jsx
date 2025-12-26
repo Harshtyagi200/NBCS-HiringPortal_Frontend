@@ -2,16 +2,14 @@ import Particles from "react-tsparticles";
 import { useEffect } from "react";
 
 export default function ParticlesBackground() {
-  // NOTE: Removed loadFull/init to avoid engine/version mismatch errors.
-  // React-tsparticles will render with the bundled engine. If you need
-  // additional plugins later we can align package versions and call loadFull.
+  
   useEffect(() => {
     if (typeof window !== 'undefined') console.debug('ParticlesBackground mounted');
   }, []);
 
   return (
     <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, zIndex: 5, pointerEvents: 'none' }}>
-      {/* Decorative soft circles to give a hiring-portal look (behind content) */}
+      
       <div aria-hidden style={{ position: 'absolute', inset: 0, zIndex: 3, pointerEvents: 'none' }}>
         <div className="bg-circle circle-1" />
         <div className="bg-circle circle-2" />
@@ -35,7 +33,7 @@ export default function ParticlesBackground() {
         @keyframes float3 { 0% { transform: translateY(0px); } 50% { transform: translateY(26px); } 100% { transform: translateY(0px); } }\
       `}</style>
 
-      {/* Particles: circular, mixed colors, gentle attract for group-like motion */}
+      
       <Particles
         options={{
           fullScreen: { enable: false },

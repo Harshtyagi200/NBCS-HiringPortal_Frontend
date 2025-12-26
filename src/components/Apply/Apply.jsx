@@ -34,17 +34,17 @@ function Apply() {
   const [otpType, setOtpType] = React.useState(null); // 'email' or 'mobile'
 
   useEffect(() => {
-    // Small delay to ensure AuthContext has loaded from localStorage
+    
     const timer = setTimeout(() => {
       console.log('Checking auth status:', isAuthenticated);
       
       if (!isAuthenticated) {
-        // Only show alert once
+        
         if (!hasShownAlertRef.current) {
           hasShownAlertRef.current = true;
           console.log('User not authenticated, redirecting to login');
           showAlert('Account Required! Please sign up or login to apply for a position.', 'warning');
-          // Use a longer delay to let alert show before navigating
+          
           setTimeout(() => {
             navigate('/login', { replace: true });
           }, 1500);
@@ -115,14 +115,14 @@ function Apply() {
     try {
       e.preventDefault();
       
-      // Double-check authentication before submission
+      
       if (!isAuthenticated) {
         showAlert('Session Error! Your session has expired. Please login again.', 'error');
         navigate('/login');
         return;
       }
       
-      // Check if email and mobile are verified
+      
       if (!verificationStatus.emailVerified) {
         showAlert('Please verify your email address first!', 'warning');
         return;
@@ -133,25 +133,25 @@ function Apply() {
         return;
       }
 
-      // Check if resume is uploaded
+     
       if (!formData.resume) {
         showAlert('Please upload your resume!', 'warning');
         return;
       }
 
-      // Check if name is filled
+      
       if (!formData.name.trim()) {
         showAlert('Please enter your name!', 'warning');
         return;
       }
 
-      // All validations passed - submit form
+      
       console.log('Form submitted with verification:', formData);
       
-      // Navigate to confirmation page
+      
       navigate('/submit');
       
-      // Reset form after submission
+      
       setTimeout(() => {
         setFormData({
           name: '',
